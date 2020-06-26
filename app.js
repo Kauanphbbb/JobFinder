@@ -19,6 +19,9 @@ app.set("views", path.join(__dirname, "views"));
 app.engine("handlebars", exphbar({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+//static folder
+app.use(express.static(path.join(__dirname, "public")));
+
 //DB connection
 db.authenticate()
   .then(() => {
@@ -30,7 +33,7 @@ db.authenticate()
 
 //Routes
 app.get("/", (req, res) => {
-  res.send("Tudo funcionando 2");
+  res.render("index");
 });
 
 //Jobs Routes
